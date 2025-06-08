@@ -1,0 +1,23 @@
+version : '3.8'
+
+services:
+  frontend:
+    image: manojgovind/feedbackapp:feedbackappfrontend
+    container_name: feedbackappfrontend
+    build:
+      context: ./
+      dockerfile: ./frontend-dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+  backend:
+    image: manojgovind/feedbackapp:feedbackappserver
+    container_name: feedbackappserver
+    build:
+      context: ./
+      dockerfile: ./server-dockerfile
+    ports:
+      - "5000:5000"
+
